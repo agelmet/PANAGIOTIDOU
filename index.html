@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Va Va Voom | The Acting Studio — Rediscover the courage to play</title>
+<meta name="description" content="Va Va Voom Acting Studio in Amsterdam — beginner acting courses, improv classes and corporate team-building workshops. Rediscover the joy of play with actress & drama teacher Eugenia Panagiotides.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Outfit:wght@300;400;500;600;700&family=Bricolage+Grotesque:opsz,wght@12..96,400..800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#0c0908;
+  --black-2:#15100e;
+  --ivory:#f5eee2;
+  --ivory-dim:#cdc2b2;
+  --amber:#e8a24a;
+  --rust:#c75c2e;
+  --oxblood:#5c1a14;
+  --glow:rgba(232,162,74,.5);
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--black);
+  color:var(--ivory);
+  font-family:'Outfit',sans-serif;
+  overflow-x:hidden;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+[hidden]{display:none!important}
+::selection{background:var(--rust);color:var(--ivory)}
+
+/* ---------- spotlight cursor ---------- */
+#spotlight{
+  position:fixed;inset:0;pointer-events:none;z-index:1;
+  background:radial-gradient(420px circle at var(--mx,50%) var(--my,30%),rgba(232,162,74,.10),transparent 65%);
+  transition:opacity .5s;mix-blend-mode:screen;
+}
+
+/* ---------- loader ---------- */
+#loader{
+  position:fixed;inset:0;z-index:9999;background:var(--black);
+  display:flex;align-items:center;justify-content:center;flex-direction:column;
+  transition:opacity .8s var(--ease),visibility .8s;
+}
+#loader.done{opacity:0;visibility:hidden}
+.loader-mark{
+  font-family:'Fraunces',serif;font-weight:900;font-style:italic;
+  font-size:clamp(2.5rem,9vw,6rem);letter-spacing:-.02em;color:var(--ivory);
+  position:relative;overflow:hidden;
+}
+.loader-mark span{display:inline-block;transform:translateY(110%);animation:loadUp .9s var(--ease) forwards}
+.loader-mark span:nth-child(2){animation-delay:.08s}
+.loader-mark span:nth-child(3){animation-delay:.16s}
+@keyframes loadUp{to{transform:translateY(0)}}
+.loader-bar{margin-top:1.6rem;width:min(260px,60vw);height:2px;background:rgba(245,238,226,.15);overflow:hidden;border-radius:2px}
+.loader-bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--rust),var(--amber));animation:loadBar 1.5s var(--ease) forwards .2s}
+@keyframes loadBar{to{width:100%}}
+.loader-sub{margin-top:1rem;font-size:.72rem;letter-spacing:.4em;text-transform:uppercase;color:var(--ivory-dim);opacity:0;animation:fadeIn .6s forwards 1s}
+@keyframes fadeIn{to{opacity:1}}
+
+/* ---------- nav ---------- */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.5rem clamp(1.2rem,5vw,4rem);
+  transition:background .4s,padding .4s,backdrop-filter .4s;
+}
+header.scrolled{background:rgba(12,9,8,.82);backdrop-filter:blur(14px);padding-top:1rem;padding-bottom:1rem;border-bottom:1px solid rgba(245,238,226,.08)}
+.brand{font-family:'Fraunces',serif;font-weight:800;font-style:italic;font-size:1.35rem;letter-spacing:-.01em;display:flex;align-items:center;gap:.5rem;z-index:101}
+.brand b{color:var(--amber)}
+.nav-links{display:flex;gap:2.2rem;align-items:center}
+.nav-links a{font-size:.82rem;letter-spacing:.12em;text-transform:uppercase;font-weight:500;position:relative;color:var(--ivory-dim);transition:color .3s}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:1px;background:var(--amber);transition:width .3s var(--ease)}
+.nav-links a:hover{color:var(--ivory)}
+.nav-links a:hover::after{width:100%}
+.nav-cta{padding:.6rem 1.3rem;border:1px solid var(--rust);border-radius:50px;color:var(--ivory)!important;background:transparent;transition:background .35s,color .35s,transform .35s}
+.nav-cta:hover{background:var(--rust);transform:translateY(-2px)}
+.nav-cta::after{display:none}
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;z-index:101;padding:6px}
+.burger span{width:26px;height:2px;background:var(--ivory);transition:.35s var(--ease);display:block}
+
+/* mobile menu */
+.mobile-menu{
+  position:fixed;inset:0;z-index:100;background:var(--black-2);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.4rem;
+  transform:translateY(-100%);transition:transform .6s var(--ease);
+}
+.mobile-menu.open{transform:translateY(0)}
+.mobile-menu a{font-family:'Fraunces',serif;font-size:2rem;font-style:italic;color:var(--ivory);opacity:0;transform:translateY(20px);transition:opacity .5s,transform .5s}
+.mobile-menu.open a{opacity:1;transform:translateY(0)}
+.mobile-menu.open a:nth-child(1){transition-delay:.15s}
+.mobile-menu.open a:nth-child(2){transition-delay:.22s}
+.mobile-menu.open a:nth-child(3){transition-delay:.29s}
+.mobile-menu.open a:nth-child(4){transition-delay:.36s}
+.mobile-menu.open a:nth-child(5){transition-delay:.43s}
+.menu-close{position:absolute;top:1.5rem;right:clamp(1.2rem,5vw,4rem);background:none;border:1px solid rgba(245,238,226,.25);width:48px;height:48px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .3s,transform .3s}
+.menu-close:hover{background:var(--rust);transform:rotate(90deg)}
+.menu-close::before,.menu-close::after{content:"";position:absolute;width:20px;height:2px;background:var(--ivory)}
+.menu-close::before{transform:rotate(45deg)}
+.menu-close::after{transform:rotate(-45deg)}
+
+/* ---------- hero ---------- */
+.hero{
+  position:relative;min-height:100vh;display:flex;align-items:center;
+  padding:8rem clamp(1.2rem,5vw,4rem) 4rem;overflow:hidden;z-index:2;
+}
+.hero-bg{position:absolute;inset:0;z-index:-2}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 30%;filter:grayscale(.2) contrast(1.05) brightness(.5);transform:scale(1.12);animation:kenburns 18s ease-out forwards}
+@keyframes kenburns{to{transform:scale(1)}}
+.hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,rgba(12,9,8,.92) 30%,rgba(12,9,8,.5) 65%,rgba(92,26,20,.35));}
+.hero-grain{position:absolute;inset:0;z-index:-1;opacity:.06;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+.hero-inner{max-width:1100px;position:relative}
+.eyebrow{display:inline-flex;align-items:center;gap:.7rem;font-size:.78rem;letter-spacing:.32em;text-transform:uppercase;color:var(--amber);margin-bottom:1.6rem;font-weight:600;
+  opacity:0;transform:translateY(20px);animation:rise .9s var(--ease) forwards .3s}
+.eyebrow .line{width:42px;height:1px;background:var(--amber)}
+.hero h1{
+  font-family:'Fraunces',serif;font-weight:300;
+  font-size:clamp(2.8rem,9vw,7.5rem);line-height:.98;letter-spacing:-.03em;margin-bottom:1.8rem;
+}
+.hero h1 .l{display:block;overflow:hidden}
+.hero h1 .l span{display:inline-block;transform:translateY(110%);animation:rise 1s var(--ease) forwards}
+.hero h1 .l:nth-child(1) span{animation-delay:.45s}
+.hero h1 .l:nth-child(2) span{animation-delay:.58s}
+.hero h1 .l:nth-child(3) span{animation-delay:.71s}
+.hero h1 em{font-style:italic;font-weight:600;color:var(--amber);position:relative}
+.hero h1 b{font-weight:900;font-style:italic}
+@keyframes rise{to{transform:translateY(0);opacity:1}}
+.hero-sub{max-width:520px;font-size:clamp(1rem,1.4vw,1.2rem);color:var(--ivory-dim);margin-bottom:2.6rem;
+  opacity:0;transform:translateY(20px);animation:rise .9s var(--ease) forwards .95s}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;opacity:0;transform:translateY(20px);animation:rise .9s var(--ease) forwards 1.1s}
+.btn{display:inline-flex;align-items:center;gap:.6rem;padding:1rem 1.9rem;border-radius:50px;font-weight:600;font-size:.92rem;letter-spacing:.02em;transition:transform .35s var(--ease),box-shadow .35s,background .35s;cursor:pointer;border:none}
+.btn-primary{background:linear-gradient(100deg,var(--rust),var(--amber));color:var(--black);box-shadow:0 8px 30px -8px var(--glow)}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 14px 40px -10px var(--glow)}
+.btn-ghost{background:transparent;color:var(--ivory);border:1px solid rgba(245,238,226,.25)}
+.btn-ghost:hover{border-color:var(--amber);transform:translateY(-3px)}
+.btn .arr{transition:transform .35s}
+.btn:hover .arr{transform:translate(4px,-4px)}
+.scroll-hint{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.6rem;font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:var(--ivory-dim);opacity:0;animation:fadeIn 1s forwards 1.6s}
+.scroll-hint .mouse{width:22px;height:36px;border:1px solid var(--ivory-dim);border-radius:14px;position:relative}
+.scroll-hint .mouse::after{content:"";position:absolute;top:7px;left:50%;transform:translateX(-50%);width:3px;height:6px;background:var(--amber);border-radius:2px;animation:scrolldot 1.6s infinite}
+@keyframes scrolldot{0%{opacity:0;top:7px}30%{opacity:1}60%{opacity:1;top:16px}100%{opacity:0;top:18px}}
+
+/* ---------- marquee ---------- */
+.marquee{border-top:1px solid rgba(245,238,226,.1);border-bottom:1px solid rgba(245,238,226,.1);padding:1.4rem 0;overflow:hidden;background:var(--black-2);position:relative;z-index:2}
+.marquee-track{display:flex;gap:3rem;white-space:nowrap;animation:scrollX 28s linear infinite;width:max-content}
+.marquee:hover .marquee-track{animation-play-state:paused}
+.marquee-track span{font-family:'Fraunces',serif;font-style:italic;font-size:clamp(1.4rem,3vw,2.4rem);color:var(--ivory-dim)}
+.marquee-track .dot{color:var(--rust);font-style:normal}
+@keyframes scrollX{to{transform:translateX(-50%)}}
+
+/* ---------- sections ---------- */
+section{position:relative;z-index:2}
+.wrap{max-width:1200px;margin:0 auto;padding:clamp(5rem,11vw,9rem) clamp(1.2rem,5vw,4rem)}
+.sec-head{margin-bottom:3.5rem}
+.sec-eyebrow{font-size:.76rem;letter-spacing:.3em;text-transform:uppercase;color:var(--rust);font-weight:700;display:flex;align-items:center;gap:.8rem;margin-bottom:1.2rem}
+.sec-eyebrow .num{font-family:'Fraunces',serif;font-style:italic;color:var(--ivory-dim)}
+.sec-title{font-family:'Fraunces',serif;font-weight:300;font-size:clamp(2rem,5.5vw,4rem);line-height:1.02;letter-spacing:-.02em;max-width:16ch}
+.sec-title em{font-style:italic;color:var(--amber)}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(40px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+.reveal.d1{transition-delay:.1s}.reveal.d2{transition-delay:.2s}.reveal.d3{transition-delay:.3s}.reveal.d4{transition-delay:.4s}
+
+/* ---------- about ---------- */
+.about{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(2rem,6vw,5rem);align-items:center}
+.about-img{position:relative}
+.about-img .frame{position:relative;border-radius:6px;overflow:hidden;cursor:zoom-in}
+.about-img .frame img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center 20%;filter:grayscale(.15) contrast(1.05);transition:transform .8s var(--ease),filter .6s}
+.about-img .frame:hover img{transform:scale(1.04);filter:grayscale(0)}
+.about-img .tag{position:absolute;bottom:-18px;left:-18px;background:var(--amber);color:var(--black);font-family:'Fraunces',serif;font-style:italic;font-weight:700;padding:.8rem 1.4rem;border-radius:4px;font-size:1.05rem;box-shadow:0 14px 30px -10px rgba(0,0,0,.6)}
+.about-txt p{font-size:1.08rem;color:var(--ivory-dim);margin-bottom:1.3rem}
+.about-txt p.lead{font-family:'Fraunces',serif;font-size:clamp(1.3rem,2.4vw,1.7rem);font-style:italic;color:var(--ivory);line-height:1.35}
+.quote{margin-top:2rem;padding-left:1.4rem;border-left:2px solid var(--rust);font-family:'Fraunces',serif;font-style:italic;font-size:1.15rem;color:var(--amber)}
+
+/* ---------- philosophy strip ---------- */
+.philosophy{background:var(--black-2);border-top:1px solid rgba(245,238,226,.07);border-bottom:1px solid rgba(245,238,226,.07)}
+.phil-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+.phil-card{padding:2rem 1.8rem;border:1px solid rgba(245,238,226,.08);border-radius:8px;background:linear-gradient(160deg,rgba(245,238,226,.02),transparent);transition:transform .5s var(--ease),border-color .5s,background .5s}
+.phil-card:hover{transform:translateY(-6px);border-color:rgba(232,162,74,.35);background:linear-gradient(160deg,rgba(232,162,74,.06),transparent)}
+.phil-card .ic{font-family:'Fraunces',serif;font-style:italic;font-weight:900;font-size:2.4rem;color:var(--rust);line-height:1;margin-bottom:1rem}
+.phil-card h3{font-family:'Fraunces',serif;font-size:1.35rem;font-weight:500;margin-bottom:.7rem}
+.phil-card p{color:var(--ivory-dim);font-size:.98rem}
+
+/* ---------- services ---------- */
+.services-list{display:flex;flex-direction:column;border-top:1px solid rgba(245,238,226,.12)}
+.svc{display:grid;grid-template-columns:auto 1fr auto;gap:clamp(1rem,4vw,3rem);align-items:center;padding:2.4rem 0;border-bottom:1px solid rgba(245,238,226,.12);cursor:default;transition:padding .5s var(--ease)}
+.svc:hover{padding-left:1.2rem;padding-right:1.2rem}
+.svc .svc-num{font-family:'Fraunces',serif;font-style:italic;font-size:1.5rem;color:var(--rust)}
+.svc-body h3{font-family:'Fraunces',serif;font-weight:400;font-size:clamp(1.6rem,4vw,2.6rem);line-height:1.05;transition:color .4s,transform .5s var(--ease)}
+.svc:hover .svc-body h3{color:var(--amber)}
+.svc-body p{color:var(--ivory-dim);margin-top:.6rem;max-width:62ch;font-size:1rem}
+.svc-meta{font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ivory-dim);text-align:right;white-space:nowrap}
+.svc-arrow{width:52px;height:52px;border:1px solid rgba(245,238,226,.2);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:background .4s,transform .4s,border-color .4s;flex-shrink:0}
+.svc:hover .svc-arrow{background:var(--rust);border-color:var(--rust);transform:rotate(45deg)}
+
+/* ---------- gallery ---------- */
+.gallery{display:grid;grid-template-columns:repeat(12,1fr);gap:1rem;grid-auto-rows:minmax(120px,auto)}
+.gal-item{overflow:hidden;border-radius:6px;cursor:zoom-in;position:relative}
+.gal-item img{width:100%;height:100%;object-fit:cover;transition:transform .9s var(--ease),filter .6s;filter:grayscale(.25)}
+.gal-item:hover img{transform:scale(1.07);filter:grayscale(0)}
+.gal-item::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(12,9,8,.4),transparent 50%);opacity:0;transition:opacity .5s}
+.gal-item:hover::after{opacity:1}
+.g1{grid-column:span 7;grid-row:span 2}
+.g2{grid-column:span 5}
+.g3{grid-column:span 5}
+.g4{grid-column:span 12;grid-row:span 1}
+
+/* ---------- reviews ---------- */
+.reviews{background:var(--black-2);border-top:1px solid rgba(245,238,226,.07)}
+.rev-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.6rem}
+.rev-card{padding:2.2rem;border:1px solid rgba(245,238,226,.1);border-radius:10px;background:linear-gradient(160deg,rgba(245,238,226,.025),transparent);position:relative;transition:transform .5s var(--ease),border-color .5s}
+.rev-card:hover{transform:translateY(-5px);border-color:rgba(232,162,74,.3)}
+.rev-card .mark{font-family:'Fraunces',serif;font-style:italic;font-weight:900;font-size:3.5rem;color:var(--rust);line-height:0;position:absolute;top:2.4rem;left:1.8rem;opacity:.45}
+.rev-card p{font-size:1.02rem;color:var(--ivory);margin:1.6rem 0 1.4rem;padding-top:1rem}
+.rev-card .who{display:flex;align-items:center;gap:.8rem;font-weight:600;color:var(--amber)}
+.rev-card .who span{width:30px;height:1px;background:var(--rust)}
+.stars{color:var(--amber);letter-spacing:.2em;margin-bottom:.4rem;font-size:.85rem}
+
+/* ---------- CTA ---------- */
+.cta-sec{text-align:center;position:relative;overflow:hidden}
+.cta-sec .glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(199,92,46,.25),transparent 65%);pointer-events:none;filter:blur(40px)}
+.cta-sec h2{font-family:'Fraunces',serif;font-weight:300;font-size:clamp(2.2rem,7vw,5.5rem);line-height:1;margin-bottom:1.5rem;position:relative}
+.cta-sec h2 em{font-style:italic;color:var(--amber)}
+.cta-sec p{color:var(--ivory-dim);max-width:48ch;margin:0 auto 2.5rem;font-size:1.1rem;position:relative}
+.cta-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;position:relative}
+
+/* ---------- footer ---------- */
+footer{background:var(--black);border-top:1px solid rgba(245,238,226,.08);padding:4rem clamp(1.2rem,5vw,4rem) 2rem}
+.foot-top{display:flex;justify-content:space-between;gap:2rem;flex-wrap:wrap;margin-bottom:3rem}
+.foot-brand{font-family:'Fraunces',serif;font-style:italic;font-weight:800;font-size:2rem;margin-bottom:.8rem}
+.foot-brand b{color:var(--amber)}
+.foot-col h4{font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;color:var(--rust);margin-bottom:1.1rem;font-weight:700}
+.foot-col a,.foot-col p{display:block;color:var(--ivory-dim);margin-bottom:.6rem;font-size:.95rem;transition:color .3s}
+.foot-col a:hover{color:var(--amber)}
+.foot-bottom{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;padding-top:1.8rem;border-top:1px solid rgba(245,238,226,.08);font-size:.82rem;color:var(--ivory-dim)}
+.foot-bottom a{color:var(--ivory-dim);transition:color .3s}
+.foot-bottom a:hover{color:var(--amber)}
+.advon b{color:var(--ivory)}
+
+/* ---------- lightbox ---------- */
+#lightbox{position:fixed;inset:0;z-index:9000;background:rgba(8,6,5,.96);display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:opacity .4s,visibility .4s;padding:2rem;cursor:zoom-out}
+#lightbox.open{opacity:1;visibility:visible}
+#lightbox img{max-width:92vw;max-height:90vh;border-radius:6px;transform:scale(.92);transition:transform .5s var(--ease);box-shadow:0 30px 80px -20px rgba(0,0,0,.8)}
+#lightbox.open img{transform:scale(1)}
+.lb-close{position:absolute;top:1.6rem;right:1.6rem;width:50px;height:50px;border:1px solid rgba(245,238,226,.3);border-radius:50%;background:none;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .3s,transform .3s}
+.lb-close:hover{background:var(--rust);transform:rotate(90deg)}
+.lb-close::before,.lb-close::after{content:"";position:absolute;width:20px;height:2px;background:var(--ivory)}
+.lb-close::before{transform:rotate(45deg)}.lb-close::after{transform:rotate(-45deg)}
+
+/* ---------- responsive ---------- */
+@media(max-width:900px){
+  .nav-links{display:none}
+  .burger{display:flex}
+  .about{grid-template-columns:1fr;gap:3rem}
+  .about-img{max-width:440px;margin:0 auto}
+  .phil-grid{grid-template-columns:1fr}
+  .rev-grid{grid-template-columns:1fr}
+  .gallery{grid-template-columns:repeat(2,1fr)}
+  .g1,.g2,.g3,.g4{grid-column:span 2;grid-row:span 1}
+  .g1 img,.g2 img,.g3 img,.g4 img{aspect-ratio:4/3}
+  .svc{grid-template-columns:auto 1fr;gap:1rem}
+  .svc-meta{display:none}
+  .svc-arrow{display:none}
+}
+@media(max-width:540px){
+  .gallery{grid-template-columns:1fr}
+  .g1,.g2,.g3,.g4{grid-column:span 1}
+  .hero-actions{width:100%}
+  .hero-actions .btn{flex:1;justify-content:center}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:.001s!important;transition-duration:.1s!important}
+  .hero-bg img{animation:none;transform:scale(1)}
+}
+</style>
+</head>
+<body>
+
+<!-- spotlight -->
+<div id="spotlight"></div>
+
+<!-- loader -->
+<div id="loader">
+  <div class="loader-mark"><span>Va</span><span>Va</span><span>Voom</span></div>
+  <div class="loader-bar"><i></i></div>
+  <div class="loader-sub">The Acting Studio</div>
+</div>
+
+<!-- header -->
+<header id="header">
+  <a href="#top" class="brand">Va<b>Va</b>Voom</a>
+  <nav class="nav-links">
+    <a href="#about">About</a>
+    <a href="#approach">Approach</a>
+    <a href="#services">Classes</a>
+    <a href="#reviews">Voices</a>
+    <a href="#contact" class="nav-cta">Book a class</a>
+  </nav>
+  <button class="burger" id="burger" aria-label="Open menu"><span></span><span></span><span></span></button>
+</header>
+
+<!-- mobile menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="menu-close" id="menuClose" aria-label="Close menu"></button>
+  <a href="#about">About</a>
+  <a href="#approach">Approach</a>
+  <a href="#services">Classes</a>
+  <a href="#reviews">Voices</a>
+  <a href="#contact">Book a class</a>
+</div>
+
+<!-- hero -->
+<section class="hero" id="top">
+  <div class="hero-bg">
+    <img src="https://raw.githubusercontent.com/agelmet/PANAGIOTIDOU/310434a55e0feb5042b6ef8540541f798ad8070f/IMG_2650.jpeg" alt="Eugenia leading an acting class">
+  </div>
+  <div class="hero-grain"></div>
+  <div class="hero-inner">
+    <span class="eyebrow"><span class="line"></span>Amsterdam · Acting & Improvisation</span>
+    <h1>
+      <span class="l"><span>Rediscover the</span></span>
+      <span class="l"><span>courage to <em>play.</em></span></span>
+    </h1>
+    <p class="hero-sub">A studio where adults learn to say <b style="color:var(--ivory)">yes</b> again — through acting, improv and the freedom to explore. No perfection. No judgement. Just the joy of being fully present.</p>
+    <div class="hero-actions">
+      <a href="#services" class="btn btn-primary">Find your class <span class="arr">↗</span></a>
+      <a href="#about" class="btn btn-ghost">Meet Eugenia</a>
+    </div>
+  </div>
+  <div class="scroll-hint"><div class="mouse"></div>Scroll</div>
+</section>
+
+<!-- marquee -->
+<div class="marquee">
+  <div class="marquee-track">
+    <span>Play</span><span class="dot">✦</span><span>Improvise</span><span class="dot">✦</span><span>Connect</span><span class="dot">✦</span><span>Express</span><span class="dot">✦</span><span>Be present</span><span class="dot">✦</span>
+    <span>Play</span><span class="dot">✦</span><span>Improvise</span><span class="dot">✦</span><span>Connect</span><span class="dot">✦</span><span>Express</span><span class="dot">✦</span><span>Be present</span><span class="dot">✦</span>
+  </div>
+</div>
+
+<!-- about -->
+<section id="about"><div class="wrap about">
+  <div class="about-img reveal">
+    <div class="frame" data-zoom="https://raw.githubusercontent.com/agelmet/PANAGIOTIDOU/310434a55e0feb5042b6ef8540541f798ad8070f/Euginia%203.jpg">
+      <img src="https://raw.githubusercontent.com/agelmet/PANAGIOTIDOU/310434a55e0feb5042b6ef8540541f798ad8070f/Euginia%203.jpg" alt="Eugenia Panagiotides, actress and drama teacher">
+    </div>
+    <div class="tag">Eugenia Panagiotides</div>
+  </div>
+  <div class="about-txt">
+    <div class="sec-eyebrow reveal"><span class="num">01</span> The teacher</div>
+    <p class="lead reveal d1">Trained at the Aristotle University School of Drama and the Stella Adler Studio in New York, Eugenia has spent a decade making rooms feel safe enough to be brave in.</p>
+    <p class="reveal d2">As children, we say yes without hesitation — we imagine, pretend and play without worrying how we look or whether we're good enough. Somewhere along the way, most of us lose that freedom. Eugenia's whole practice is about getting it back.</p>
+    <p class="reveal d3">Through acting and improvisation, she invites beginners and seasoned performers alike to take risks, make mistakes, and grow through doing rather than judging — building skill little by little through play and genuine connection.</p>
+    <div class="quote reveal d4">"We are aware of what we are doing, but we are not judging."</div>
+  </div>
+</div></section>
+
+<!-- philosophy / approach -->
+<section class="philosophy" id="approach"><div class="wrap">
+  <div class="sec-head reveal">
+    <div class="sec-eyebrow"><span class="num">02</span> The approach</div>
+    <h2 class="sec-title">Creativity flourishes when people feel <em>safe.</em></h2>
+  </div>
+  <div class="phil-grid">
+    <div class="phil-card reveal d1">
+      <div class="ic">①</div>
+      <h3>A place to explore</h3>
+      <p>This isn't about perfection. It's about exploration — a space where mistakes are celebrated as part of the process and beginners are genuinely welcome.</p>
+    </div>
+    <div class="phil-card reveal d2">
+      <div class="ic">②</div>
+      <h3>Growth through doing</h3>
+      <p>You learn acting by acting. We take risks, try new things, fail, learn, and try again — developing awareness of our choices without harsh self-criticism.</p>
+    </div>
+    <div class="phil-card reveal d3">
+      <div class="ic">③</div>
+      <h3>A supportive community</h3>
+      <p>Strangers become an ensemble. Here you'll find a group that feels like family — where play, expression and personal growth happen side by side.</p>
+    </div>
+  </div>
+</div></section>
+
+<!-- services -->
+<section id="services"><div class="wrap">
+  <div class="sec-head reveal">
+    <div class="sec-eyebrow"><span class="num">03</span> What we offer</div>
+    <h2 class="sec-title">Three ways to step <em>into the light.</em></h2>
+  </div>
+  <div class="services-list">
+    <div class="svc reveal d1">
+      <div class="svc-num">01</div>
+      <div class="svc-body">
+        <h3>Beginner Acting</h3>
+        <p>Step into an acting class for the very first time. Build confidence in front of others, find your creative voice, and discover what it feels like to be fully present — all at your own pace.</p>
+      </div>
+      <div class="svc-meta">Weekly course<br>All levels</div>
+      <div class="svc-arrow">↗</div>
+    </div>
+    <div class="svc reveal d2">
+      <div class="svc-num">02</div>
+      <div class="svc-body">
+        <h3>Improvisation</h3>
+        <p>Learn to say "yes, and" — to listen, respond and create in real time. Improv sharpens spontaneity, presence and communication, and it's the most fun you'll have learning anything.</p>
+      </div>
+      <div class="svc-meta">Group classes<br>No experience needed</div>
+      <div class="svc-arrow">↗</div>
+    </div>
+    <div class="svc reveal d3">
+      <div class="svc-num">03</div>
+      <div class="svc-body">
+        <h3>Corporate Workshops</h3>
+        <p>Get your team out of the office mindset and back into curiosity. Playful, energetic, purposeful sessions that strengthen how people communicate, listen, trust and collaborate — at your office, a creative space, or outdoors.</p>
+      </div>
+      <div class="svc-meta">Tailored<br>For teams</div>
+      <div class="svc-arrow">↗</div>
+    </div>
+  </div>
+</div></section>
+
+<!-- gallery -->
+<section id="gallery"><div class="wrap">
+  <div class="sec-head reveal">
+    <div class="sec-eyebrow"><span class="num">04</span> On the floor</div>
+    <h2 class="sec-title">Where the <em>play</em> happens.</h2>
+  </div>
+  <div class="gallery">
+    <div class="gal-item g1 reveal" data-zoom="https://raw.githubusercontent.com/agelmet/PANAGIOTIDOU/310434a55e0feb5042b6ef8540541f798ad8070f/IMG_2650.jpeg"><img src="https://raw.githubusercontent.com/agelmet/PANAGIOTIDOU/310434a55e0feb5042b6ef8540541f798ad8070f/IMG_2650.jpeg" alt="Eugenia improvising during a class"></div>
+    <div class="gal-item g2 reveal d1" data-zoom="https://raw.githubusercontent.com/agelmet/PANAGIOTIDOU/310434a55e0feb5042b6ef8540541f798ad8070f/Euginia%201.jpg"><img src="https://raw.githubusercontent.com/agelmet/PANAGIOTIDOU/310434a55e0feb5042b6ef8540541f798ad8070f/Euginia%201.jpg" alt="Portrait of Eugenia"></div>
+    <div class="gal-item g3 reveal d2" data-zoom="https://raw.githubusercontent.com/agelmet/PANAGIOTIDOU/310434a55e0feb5042b6ef8540541f798ad8070f/IMG_2650.jpeg"><img src="https://raw.githubusercontent.com/agelmet/PANAGIOTIDOU/310434a55e0feb5042b6ef8540541f798ad8070f/IMG_2650.jpeg" alt="Acting class in session"></div>
+  </div>
+</div></section>
+
+<!-- reviews -->
+<section class="reviews" id="reviews"><div class="wrap">
+  <div class="sec-head reveal">
+    <div class="sec-eyebrow"><span class="num">05</span> Voices from the room</div>
+    <h2 class="sec-title">What people <em>take home.</em></h2>
+  </div>
+  <div class="rev-grid">
+    <div class="rev-card reveal d1">
+      <div class="mark">"</div>
+      <div class="stars">★★★★★</div>
+      <p>Eugenia makes every class something to look forward to all week. She has a rare ability to make everyone feel comfortable being themselves while gently encouraging them to step outside their comfort zone at their own pace. I learned a lot, laughed a lot, and would highly recommend her to anyone curious about giving acting or improv a try.</p>
+      <div class="who"><span></span>Marton</div>
+    </div>
+    <div class="rev-card reveal d2">
+      <div class="mark">"</div>
+      <div class="stars">★★★★★</div>
+      <p>With a steady, well-thought pace she created an environment where the seven of us felt comfortable to open up. Her authentic, humble approach made us respect her even more as we transformed, little by little, from strangers into an acting team. She builds real skill through play and connection.</p>
+      <div class="who"><span></span>Florina</div>
+    </div>
+    <div class="rev-card reveal d1">
+      <div class="mark">"</div>
+      <div class="stars">★★★★★</div>
+      <p>An incredible atmosphere where each of us stopped being shy and opened up completely. Beyond acting, we also learned real improvisation techniques. A great professional — thank you, Eugenia ❤️</p>
+      <div class="who"><span></span>Lana</div>
+    </div>
+    <div class="rev-card reveal d2">
+      <div class="mark">"</div>
+      <div class="stars">★★★★★</div>
+      <p>I loved the course structure — getting to know each other, understanding our strengths and weaknesses, corrected gently yet professionally with an accurate eye. She made us feel safe, playful, and generally like a family.</p>
+      <div class="who"><span></span>Jonathan</div>
+    </div>
+  </div>
+</div></section>
+
+<!-- CTA -->
+<section class="cta-sec" id="contact"><div class="wrap">
+  <div class="glow"></div>
+  <div class="sec-eyebrow reveal" style="justify-content:center">Ready when you are</div>
+  <h2 class="reveal d1">Where adults learn<br>to <em>say yes</em> again.</h2>
+  <p class="reveal d2">Whether you're stepping onto the floor for the first time or bringing your whole team — there's a place for you here. Send a message and let's find your class.</p>
+  <div class="cta-actions reveal d3">
+    <a href="https://wa.me/31687842951" target="_blank" rel="noopener" class="btn btn-primary">WhatsApp Eugenia <span class="arr">↗</span></a>
+    <a href="mailto:eugeniapntd@gmail.com" class="btn btn-ghost">eugeniapntd@gmail.com</a>
+  </div>
+</div></section>
+
+<!-- footer -->
+<footer>
+  <div class="foot-top">
+    <div class="foot-col">
+      <div class="foot-brand">Va<b>Va</b>Voom</div>
+      <p style="color:var(--ivory-dim);max-width:30ch">The Acting Studio. Acting, improvisation, and the freedom to explore — in Amsterdam.</p>
+    </div>
+    <div class="foot-col">
+      <h4>Explore</h4>
+      <a href="#about">About Eugenia</a>
+      <a href="#approach">Our approach</a>
+      <a href="#services">Classes & workshops</a>
+      <a href="#reviews">Voices</a>
+    </div>
+    <div class="foot-col">
+      <h4>Get in touch</h4>
+      <a href="https://wa.me/31687842951" target="_blank" rel="noopener">WhatsApp · +31 687 842 951</a>
+      <a href="mailto:eugeniapntd@gmail.com">eugeniapntd@gmail.com</a>
+      <p>Amsterdam, NL</p>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <div>© <span id="year"></span> Va Va Voom — The Acting Studio. All rights reserved.</div>
+    <div class="advon">Crafted by <a href="https://advonmedia.com" target="_blank" rel="noopener"><b>Advon Media</b></a></div>
+  </div>
+</footer>
+
+<!-- lightbox -->
+<div id="lightbox"><button class="lb-close" aria-label="Close"></button><img src="" alt="Expanded view"></div>
+
+<script>
+(function(){
+  // year
+  document.getElementById('year').textContent=new Date().getFullYear();
+
+  // loader
+  window.addEventListener('load',function(){
+    setTimeout(function(){document.getElementById('loader').classList.add('done')},1700);
+  });
+
+  // header scroll
+  var header=document.getElementById('header');
+  window.addEventListener('scroll',function(){
+    if(window.scrollY>40)header.classList.add('scrolled');else header.classList.remove('scrolled');
+  });
+
+  // spotlight follow
+  var sl=document.getElementById('spotlight');
+  window.addEventListener('mousemove',function(e){
+    sl.style.setProperty('--mx',e.clientX+'px');
+    sl.style.setProperty('--my',e.clientY+'px');
+  });
+
+  // mobile menu
+  var burger=document.getElementById('burger'),
+      mm=document.getElementById('mobileMenu'),
+      mc=document.getElementById('menuClose');
+  function openMenu(){mm.classList.add('open');document.body.style.overflow='hidden';}
+  function closeMenu(){mm.classList.remove('open');document.body.style.overflow='';}
+  burger.addEventListener('click',openMenu);
+  mc.addEventListener('click',closeMenu);
+  mm.querySelectorAll('a').forEach(function(a){a.addEventListener('click',closeMenu);});
+
+  // reveal on scroll
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});
+  },{threshold:.12,rootMargin:'0px 0px -8% 0px'});
+  document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+
+  // lightbox
+  var lb=document.getElementById('lightbox'),
+      lbImg=lb.querySelector('img'),
+      lbClose=lb.querySelector('.lb-close');
+  function openLB(src){lbImg.src=src;lb.classList.add('open');document.body.style.overflow='hidden';}
+  function closeLB(){lb.classList.remove('open');document.body.style.overflow='';setTimeout(function(){lbImg.src='';},400);}
+  document.querySelectorAll('[data-zoom]').forEach(function(el){
+    el.addEventListener('click',function(){openLB(el.getAttribute('data-zoom'));});
+  });
+  lb.addEventListener('click',function(e){if(e.target!==lbImg)closeLB();});
+  lbClose.addEventListener('click',closeLB);
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeLB();closeMenu();}});
+})();
+</script>
+</body>
+</html>

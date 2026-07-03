@@ -7,7 +7,7 @@
 <meta name="description" content="Va Va Voom Acting Studio in Amsterdam — beginner acting courses, improv classes and corporate team-building workshops. Rediscover the joy of play with actress & drama teacher Eugenia Panagiotides.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Outfit:wght@300;400;500;600;700&family=Bricolage+Grotesque:opsz,wght@12..96,400..800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300..800;1,300..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
 <style>
 :root{
   --black:#0c0908;
@@ -25,7 +25,7 @@ html{scroll-behavior:smooth}
 body{
   background:var(--black);
   color:var(--ivory);
-  font-family:'Outfit',sans-serif;
+  font-family:'Montserrat',sans-serif;
   overflow-x:hidden;
   line-height:1.6;
   -webkit-font-smoothing:antialiased;
@@ -34,6 +34,30 @@ img{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
 [hidden]{display:none!important}
 ::selection{background:var(--rust);color:var(--ivory)}
+
+/* ---------- Typography Utility Rules ---------- */
+/* Apply Playfair Display specifically to Main Hero Title, Orange Text, and Education Section */
+.hero h1,
+.hero h1 em,
+.hero h1 b,
+.eyebrow,
+.sec-eyebrow,
+.sec-eyebrow .num,
+.brand b,
+.quote,
+.rev-card .who,
+.rev-card .mark,
+.stars,
+.svc-num,
+.cms-tag,
+.about-txt p,
+.about-txt p.lead,
+.sec-title em,
+.cta-sec h2 em,
+[style*="color:var(--amber)"],
+[style*="color:var(--rust)"] {
+  font-family: 'Playfair Display', serif !important;
+}
 
 /* ---------- spotlight cursor ---------- */
 #spotlight{
@@ -50,7 +74,7 @@ a{color:inherit;text-decoration:none}
 }
 #loader.done{opacity:0;visibility:hidden}
 .loader-mark{
-  font-family:'Fraunces',serif;font-weight:900;font-style:italic;
+  font-family:'Playfair Display',serif;font-weight:900;font-style:italic;
   font-size:clamp(2.5rem,9vw,6rem);letter-spacing:-.02em;color:var(--ivory);
   position:relative;overflow:hidden;
 }
@@ -72,9 +96,9 @@ header{
   transition:background .4s,padding .4s,backdrop-filter .4s;
 }
 header.scrolled{background:rgba(12,9,8,.82);backdrop-filter:blur(14px);padding-top:1rem;padding-bottom:1rem;border-bottom:1px solid rgba(245,238,226,.08)}
-.brand{font-family:'Fraunces',serif;font-weight:800;font-style:italic;font-size:1.35rem;letter-spacing:-.01em;display:flex;align-items:center;gap:.5rem;z-index:101}
+.brand{font-family:'Playfair Display',serif;font-weight:800;font-style:italic;font-size:1.35rem;letter-spacing:-.01em;display:flex;align-items:center;gap:.5rem;z-index:101}
 .brand b{color:var(--amber)}
-.nav-links{display:flex;gap:2.2rem;align-items:center}
+.nav-links{display:flex;gap:2rem;align-items:center}
 .nav-links a{font-size:.82rem;letter-spacing:.12em;text-transform:uppercase;font-weight:500;position:relative;color:var(--ivory-dim);transition:color .3s}
 .nav-links a::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:1px;background:var(--amber);transition:width .3s var(--ease)}
 .nav-links a:hover{color:var(--ivory)}
@@ -92,13 +116,14 @@ header.scrolled{background:rgba(12,9,8,.82);backdrop-filter:blur(14px);padding-t
   transform:translateY(-100%);transition:transform .6s var(--ease);
 }
 .mobile-menu.open{transform:translateY(0)}
-.mobile-menu a{font-family:'Fraunces',serif;font-size:2rem;font-style:italic;color:var(--ivory);opacity:0;transform:translateY(20px);transition:opacity .5s,transform .5s}
+.mobile-menu a{font-family:'Playfair Display',serif;font-size:2rem;font-style:italic;color:var(--ivory);opacity:0;transform:translateY(20px);transition:opacity .5s,transform .5s}
 .mobile-menu.open a{opacity:1;transform:translateY(0)}
 .mobile-menu.open a:nth-child(1){transition-delay:.15s}
 .mobile-menu.open a:nth-child(2){transition-delay:.22s}
 .mobile-menu.open a:nth-child(3){transition-delay:.29s}
 .mobile-menu.open a:nth-child(4){transition-delay:.36s}
 .mobile-menu.open a:nth-child(5){transition-delay:.43s}
+.mobile-menu.open a:nth-child(6){transition-delay:.50s}
 .menu-close{position:absolute;top:1.5rem;right:clamp(1.2rem,5vw,4rem);background:none;border:1px solid rgba(245,238,226,.25);width:48px;height:48px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .3s,transform .3s}
 .menu-close:hover{background:var(--rust);transform:rotate(90deg)}
 .menu-close::before,.menu-close::after{content:"";position:absolute;width:20px;height:2px;background:var(--ivory)}
@@ -117,11 +142,11 @@ header.scrolled{background:rgba(12,9,8,.82);backdrop-filter:blur(14px);padding-t
 .hero-grain{position:absolute;inset:0;z-index:-1;opacity:.06;pointer-events:none;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
 .hero-inner{max-width:1100px;position:relative}
-.eyebrow{display:inline-flex;align-items:center;gap:.7rem;font-size:.78rem;letter-spacing:.32em;text-transform:uppercase;color:var(--amber);margin-bottom:1.6rem;font-weight:600;
+.eyebrow{display:inline-flex;align-items:center;gap:.7rem;font-size:.85rem;letter-spacing:.32em;text-transform:uppercase;color:var(--amber);margin-bottom:1.6rem;font-weight:600;
   opacity:0;transform:translateY(20px);animation:rise .9s var(--ease) forwards .3s}
 .eyebrow .line{width:42px;height:1px;background:var(--amber)}
 .hero h1{
-  font-family:'Fraunces',serif;font-weight:300;
+  font-family:'Playfair Display',serif;font-weight:400;
   font-size:clamp(2.8rem,9vw,7.5rem);line-height:.98;letter-spacing:-.03em;margin-bottom:1.8rem;
 }
 .hero h1 .l{display:block;overflow:hidden}
@@ -147,21 +172,13 @@ header.scrolled{background:rgba(12,9,8,.82);backdrop-filter:blur(14px);padding-t
 .scroll-hint .mouse::after{content:"";position:absolute;top:7px;left:50%;transform:translateX(-50%);width:3px;height:6px;background:var(--amber);border-radius:2px;animation:scrolldot 1.6s infinite}
 @keyframes scrolldot{0%{opacity:0;top:7px}30%{opacity:1}60%{opacity:1;top:16px}100%{opacity:0;top:18px}}
 
-/* ---------- marquee ---------- */
-.marquee{border-top:1px solid rgba(245,238,226,.1);border-bottom:1px solid rgba(245,238,226,.1);padding:1.4rem 0;overflow:hidden;background:var(--black-2);position:relative;z-index:2}
-.marquee-track{display:flex;gap:3rem;white-space:nowrap;animation:scrollX 28s linear infinite;width:max-content}
-.marquee:hover .marquee-track{animation-play-state:paused}
-.marquee-track span{font-family:'Fraunces',serif;font-style:italic;font-size:clamp(1.4rem,3vw,2.4rem);color:var(--ivory-dim)}
-.marquee-track .dot{color:var(--rust);font-style:normal}
-@keyframes scrollX{to{transform:translateX(-50%)}}
-
 /* ---------- sections ---------- */
 section{position:relative;z-index:2}
 .wrap{max-width:1200px;margin:0 auto;padding:clamp(5rem,11vw,9rem) clamp(1.2rem,5vw,4rem)}
 .sec-head{margin-bottom:3.5rem}
-.sec-eyebrow{font-size:.76rem;letter-spacing:.3em;text-transform:uppercase;color:var(--rust);font-weight:700;display:flex;align-items:center;gap:.8rem;margin-bottom:1.2rem}
-.sec-eyebrow .num{font-family:'Fraunces',serif;font-style:italic;color:var(--ivory-dim)}
-.sec-title{font-family:'Fraunces',serif;font-weight:300;font-size:clamp(2rem,5.5vw,4rem);line-height:1.02;letter-spacing:-.02em;max-width:16ch}
+.sec-eyebrow{font-size:.85rem;letter-spacing:.3em;text-transform:uppercase;color:var(--rust);font-weight:700;display:flex;align-items:center;gap:.8rem;margin-bottom:1.2rem}
+.sec-eyebrow .num{font-family:'Playfair Display',serif;font-style:italic;color:var(--ivory-dim);font-size:1.1rem}
+.sec-title{font-family:'Playfair Display',serif;font-weight:300;font-size:clamp(2rem,5.5vw,4rem);line-height:1.08;letter-spacing:-.02em;max-width:16ch}
 .sec-title em{font-style:italic;color:var(--amber)}
 
 /* reveal */
@@ -175,67 +192,87 @@ section{position:relative;z-index:2}
 .about-img .frame{position:relative;border-radius:6px;overflow:hidden;cursor:zoom-in}
 .about-img .frame img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center 20%;filter:grayscale(.15) contrast(1.05);transition:transform .8s var(--ease),filter .6s}
 .about-img .frame:hover img{transform:scale(1.04);filter:grayscale(0)}
-.about-img .tag{position:absolute;bottom:-18px;left:-18px;background:var(--amber);color:var(--black);font-family:'Fraunces',serif;font-style:italic;font-weight:700;padding:.8rem 1.4rem;border-radius:4px;font-size:1.05rem;box-shadow:0 14px 30px -10px rgba(0,0,0,.6)}
-.about-txt p{font-size:1.08rem;color:var(--ivory-dim);margin-bottom:1.3rem}
-.about-txt p.lead{font-family:'Fraunces',serif;font-size:clamp(1.3rem,2.4vw,1.7rem);font-style:italic;color:var(--ivory);line-height:1.35}
-.quote{margin-top:2rem;padding-left:1.4rem;border-left:2px solid var(--rust);font-family:'Fraunces',serif;font-style:italic;font-size:1.15rem;color:var(--amber)}
+.about-img .tag{position:absolute;bottom:-18px;left:-18px;background:var(--amber);color:var(--black);font-family:'Playfair Display',serif;font-style:italic;font-weight:700;padding:.8rem 1.4rem;border-radius:4px;font-size:1.05rem;box-shadow:0 14px 30px -10px rgba(0,0,0,.6)}
+.about-txt p{font-size:1.08rem;color:var(--ivory-dim);margin-bottom:1.3rem;line-height:1.8}
+.about-txt p.lead{font-family:'Playfair Display',serif;font-size:clamp(1.3rem,2.4vw,1.7rem);font-style:italic;color:var(--ivory);line-height:1.45}
+.quote{margin-top:2rem;padding-left:1.4rem;border-left:2px solid var(--rust);font-family:'Playfair Display',serif;font-style:italic;font-size:1.25rem;color:var(--amber)}
 
 /* ---------- philosophy strip ---------- */
 .philosophy{background:var(--black-2);border-top:1px solid rgba(245,238,226,.07);border-bottom:1px solid rgba(245,238,226,.07)}
 .phil-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
-.phil-card{padding:2rem 1.8rem;border:1px solid rgba(245,238,226,.08);border-radius:8px;background:linear-gradient(160deg,rgba(245,238,226,.02),transparent);transition:transform .5s var(--ease),border-color .5s,background .5s}
+.phil-card{padding:2.2rem 1.8rem;border:1px solid rgba(245,238,226,.08);border-radius:10px;background:linear-gradient(160deg,rgba(245,238,226,.02),transparent);transition:transform .5s var(--ease),border-color .5s,background .5s}
 .phil-card:hover{transform:translateY(-6px);border-color:rgba(232,162,74,.35);background:linear-gradient(160deg,rgba(232,162,74,.06),transparent)}
-.phil-card .ic{font-family:'Fraunces',serif;font-style:italic;font-weight:900;font-size:2.4rem;color:var(--rust);line-height:1;margin-bottom:1rem}
-.phil-card h3{font-family:'Fraunces',serif;font-size:1.35rem;font-weight:500;margin-bottom:.7rem}
-.phil-card p{color:var(--ivory-dim);font-size:.98rem}
+.phil-card .ic{font-family:'Playfair Display',serif;font-style:italic;font-weight:900;font-size:2.4rem;color:var(--rust);line-height:1;margin-bottom:1rem}
+.phil-card h3{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:500;margin-bottom:.8rem}
+.phil-card p{color:var(--ivory-dim);font-size:.98rem;line-height:1.7}
 
-/* ---------- services ---------- */
-.services-list{display:flex;flex-direction:column;border-top:1px solid rgba(245,238,226,.12)}
-.svc{display:grid;grid-template-columns:auto 1fr auto;gap:clamp(1rem,4vw,3rem);align-items:center;padding:2.4rem 0;border-bottom:1px solid rgba(245,238,226,.12);cursor:default;transition:padding .5s var(--ease)}
-.svc:hover{padding-left:1.2rem;padding-right:1.2rem}
-.svc .svc-num{font-family:'Fraunces',serif;font-style:italic;font-size:1.5rem;color:var(--rust)}
-.svc-body h3{font-family:'Fraunces',serif;font-weight:400;font-size:clamp(1.6rem,4vw,2.6rem);line-height:1.05;transition:color .4s,transform .5s var(--ease)}
+/* ---------- services (Cards perfectly centered & aligned) ---------- */
+.services-list{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;border-top:1px solid rgba(245,238,226,.12);padding-top:3rem}
+.svc{display:flex;flex-direction:column;align-items:center;text-align:center;padding:2.8rem 2rem 2.2rem;border:1px solid rgba(245,238,226,.12);border-radius:12px;background:linear-gradient(160deg,rgba(245,238,226,.02),transparent);transition:transform .5s var(--ease),border-color .5s,box-shadow .5s}
+.svc:hover{transform:translateY(-8px);border-color:rgba(232,162,74,.4);box-shadow:0 16px 40px -10px var(--glow)}
+.svc .svc-num{font-family:'Playfair Display',serif;font-style:italic;font-size:1.8rem;color:var(--rust);margin-bottom:1.2rem}
+.svc-body{flex:1;display:flex;flex-direction:column;align-items:center;width:100%}
+.svc-body h3{font-family:'Playfair Display',serif;font-weight:500;font-size:1.8rem;line-height:1.2;margin-bottom:1rem;transition:color .4s}
 .svc:hover .svc-body h3{color:var(--amber)}
-.svc-body p{color:var(--ivory-dim);margin-top:.6rem;max-width:62ch;font-size:1rem}
-.svc-meta{font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ivory-dim);text-align:right;white-space:nowrap}
-.svc-arrow{width:52px;height:52px;border:1px solid rgba(245,238,226,.2);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:background .4s,transform .4s,border-color .4s;flex-shrink:0}
+.svc-body p{color:var(--ivory-dim);font-size:.98rem;line-height:1.7;margin-bottom:1.5rem}
+.svc-meta{font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ivory-dim);margin-bottom:2rem}
+/* Horizontally perfectly centered arrow at the bottom of the card */
+.svc-arrow{margin:auto auto 0 auto;width:52px;height:52px;border:1px solid rgba(245,238,226,.2);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:background .4s,transform .4s,border-color .4s;flex-shrink:0}
 .svc:hover .svc-arrow{background:var(--rust);border-color:var(--rust);transform:rotate(45deg)}
 
+/* ---------- Corporate Section / CMS Architecture ---------- */
+.corporate{background:var(--black-2);border-top:1px solid rgba(245,238,226,.07);border-bottom:1px solid rgba(245,238,226,.07)}
+.cms-feed{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-bottom:4rem}
+.cms-feed:last-child{margin-bottom:0}
+.cms-section-subtitle{font-family:'Playfair Display',serif;font-size:1.8rem;color:var(--ivory);margin-bottom:1.8rem;border-bottom:1px solid rgba(245,238,226,.1);padding-bottom:.8rem}
+/* Modular CMS card block designed for easy future duplication */
+.cms-card{display:flex;flex-direction:column;border:1px solid rgba(245,238,226,.1);border-radius:10px;overflow:hidden;background:linear-gradient(160deg,rgba(245,238,226,.025),transparent);transition:transform .5s var(--ease),border-color .5s}
+.cms-card:hover{transform:translateY(-6px);border-color:rgba(232,162,74,.35)}
+.cms-card-img{width:100%;aspect-ratio:16/10;overflow:hidden;position:relative}
+.cms-card-img img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
+.cms-card:hover .cms-card-img img{transform:scale(1.06)}
+.cms-tag{position:absolute;top:1rem;left:1rem;background:var(--rust);color:var(--ivory);font-family:'Playfair Display',serif;font-style:italic;font-size:.85rem;padding:.3rem .8rem;border-radius:4px;z-index:2}
+.cms-card-body{padding:1.8rem;display:flex;flex-direction:column;flex:1}
+.cms-card-body h3{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:500;margin-bottom:.8rem;line-height:1.3;color:var(--ivory);transition:color .3s}
+.cms-card:hover .cms-card-body h3{color:var(--amber)}
+.cms-card-body p{color:var(--ivory-dim);font-size:.95rem;line-height:1.7;margin-bottom:1.5rem;flex:1}
+.cms-footer{display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(245,238,226,.08);padding-top:1rem;font-size:.82rem;color:var(--amber);font-weight:600;letter-spacing:.05em}
+
 /* ---------- gallery ---------- */
-.gallery{display:grid;grid-template-columns:repeat(12,1fr);gap:1rem;grid-auto-rows:minmax(120px,auto)}
-.gal-item{overflow:hidden;border-radius:6px;cursor:zoom-in;position:relative}
-.gal-item img{width:100%;height:100%;object-fit:cover;transition:transform .9s var(--ease),filter .6s;filter:grayscale(.25)}
+.gallery{display:grid;grid-template-columns:repeat(12,1fr);gap:1.2rem;grid-auto-rows:minmax(260px,auto)}
+.gal-item{overflow:hidden;border-radius:8px;cursor:zoom-in;position:relative}
+.gal-item img{width:100%;height:100%;object-fit:cover;transition:transform .9s var(--ease),filter .6s;filter:grayscale(.15)}
 .gal-item:hover img{transform:scale(1.07);filter:grayscale(0)}
 .gal-item::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(12,9,8,.4),transparent 50%);opacity:0;transition:opacity .5s}
 .gal-item:hover::after{opacity:1}
-.g1{grid-column:span 7;grid-row:span 2}
-.g2{grid-column:span 5}
-.g3{grid-column:span 5}
-.g4{grid-column:span 12;grid-row:span 1}
+.g1{grid-column:span 7;grid-row:span 1}
+.g2{grid-column:span 5;grid-row:span 1}
+.g3{grid-column:span 6;grid-row:span 1}
+.g4{grid-column:span 6;grid-row:span 1}
 
 /* ---------- reviews ---------- */
 .reviews{background:var(--black-2);border-top:1px solid rgba(245,238,226,.07)}
 .rev-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.6rem}
 .rev-card{padding:2.2rem;border:1px solid rgba(245,238,226,.1);border-radius:10px;background:linear-gradient(160deg,rgba(245,238,226,.025),transparent);position:relative;transition:transform .5s var(--ease),border-color .5s}
 .rev-card:hover{transform:translateY(-5px);border-color:rgba(232,162,74,.3)}
-.rev-card .mark{font-family:'Fraunces',serif;font-style:italic;font-weight:900;font-size:3.5rem;color:var(--rust);line-height:0;position:absolute;top:2.4rem;left:1.8rem;opacity:.45}
-.rev-card p{font-size:1.02rem;color:var(--ivory);margin:1.6rem 0 1.4rem;padding-top:1rem}
-.rev-card .who{display:flex;align-items:center;gap:.8rem;font-weight:600;color:var(--amber)}
+.rev-card .mark{font-family:'Playfair Display',serif;font-style:italic;font-weight:900;font-size:3.5rem;color:var(--rust);line-height:0;position:absolute;top:2.4rem;left:1.8rem;opacity:.45}
+.rev-card p{font-size:1.02rem;color:var(--ivory);margin:1.6rem 0 1.4rem;padding-top:1rem;line-height:1.7}
+.rev-card .who{display:flex;align-items:center;gap:.8rem;font-weight:600;color:var(--amber);font-family:'Playfair Display',serif;font-size:1.1rem}
 .rev-card .who span{width:30px;height:1px;background:var(--rust)}
-.stars{color:var(--amber);letter-spacing:.2em;margin-bottom:.4rem;font-size:.85rem}
+.stars{color:var(--amber);letter-spacing:.2em;margin-bottom:.4rem;font-size:.95rem;font-family:'Playfair Display',serif}
 
 /* ---------- CTA ---------- */
 .cta-sec{text-align:center;position:relative;overflow:hidden}
 .cta-sec .glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(199,92,46,.25),transparent 65%);pointer-events:none;filter:blur(40px)}
-.cta-sec h2{font-family:'Fraunces',serif;font-weight:300;font-size:clamp(2.2rem,7vw,5.5rem);line-height:1;margin-bottom:1.5rem;position:relative}
+.cta-sec h2{font-family:'Playfair Display',serif;font-weight:300;font-size:clamp(2.2rem,7vw,5.5rem);line-height:1.05;margin-bottom:1.5rem;position:relative}
 .cta-sec h2 em{font-style:italic;color:var(--amber)}
-.cta-sec p{color:var(--ivory-dim);max-width:48ch;margin:0 auto 2.5rem;font-size:1.1rem;position:relative}
+.cta-sec p{color:var(--ivory-dim);max-width:48ch;margin:0 auto 2.5rem;font-size:1.1rem;position:relative;line-height:1.7}
 .cta-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;position:relative}
 
 /* ---------- footer ---------- */
 footer{background:var(--black);border-top:1px solid rgba(245,238,226,.08);padding:4rem clamp(1.2rem,5vw,4rem) 2rem}
 .foot-top{display:flex;justify-content:space-between;gap:2rem;flex-wrap:wrap;margin-bottom:3rem}
-.foot-brand{font-family:'Fraunces',serif;font-style:italic;font-weight:800;font-size:2rem;margin-bottom:.8rem}
+.foot-brand{font-family:'Playfair Display',serif;font-style:italic;font-weight:800;font-size:2rem;margin-bottom:.8rem}
 .foot-brand b{color:var(--amber)}
 .foot-col h4{font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;color:var(--rust);margin-bottom:1.1rem;font-weight:700}
 .foot-col a,.foot-col p{display:block;color:var(--ivory-dim);margin-bottom:.6rem;font-size:.95rem;transition:color .3s}
@@ -262,13 +299,12 @@ footer{background:var(--black);border-top:1px solid rgba(245,238,226,.08);paddin
   .about{grid-template-columns:1fr;gap:3rem}
   .about-img{max-width:440px;margin:0 auto}
   .phil-grid{grid-template-columns:1fr}
+  .services-list{grid-template-columns:1fr}
+  .cms-feed{grid-template-columns:1fr}
   .rev-grid{grid-template-columns:1fr}
   .gallery{grid-template-columns:repeat(2,1fr)}
   .g1,.g2,.g3,.g4{grid-column:span 2;grid-row:span 1}
   .g1 img,.g2 img,.g3 img,.g4 img{aspect-ratio:4/3}
-  .svc{grid-template-columns:auto 1fr;gap:1rem}
-  .svc-meta{display:none}
-  .svc-arrow{display:none}
 }
 @media(max-width:540px){
   .gallery{grid-template-columns:1fr}
@@ -301,6 +337,7 @@ footer{background:var(--black);border-top:1px solid rgba(245,238,226,.08);paddin
     <a href="#about">About</a>
     <a href="#approach">Approach</a>
     <a href="#services">Classes</a>
+    <a href="#corporate">Corporate</a>
     <a href="#reviews">Voices</a>
     <a href="#contact" class="nav-cta">Book a class</a>
   </nav>
@@ -313,6 +350,7 @@ footer{background:var(--black);border-top:1px solid rgba(245,238,226,.08);paddin
   <a href="#about">About</a>
   <a href="#approach">Approach</a>
   <a href="#services">Classes</a>
+  <a href="#corporate">Corporate</a>
   <a href="#reviews">Voices</a>
   <a href="#contact">Book a class</a>
 </div>
@@ -329,7 +367,7 @@ footer{background:var(--black);border-top:1px solid rgba(245,238,226,.08);paddin
       <span class="l"><span>Rediscover the</span></span>
       <span class="l"><span>courage to <em>play.</em></span></span>
     </h1>
-    <p class="hero-sub">A studio where adults learn to say <b style="color:var(--ivory)">yes</b> again — through acting, improv and the freedom to explore. No perfection. No judgement. Just the joy of being fully present.</p>
+    <p class="hero-sub">A studio where adults learn to say <b style="color:var(--amber)">yes</b> again — through acting, improv and the freedom to explore. No perfection. No judgement. Just the joy of being fully present.</p>
     <div class="hero-actions">
       <a href="#services" class="btn btn-primary">Find your class <span class="arr">↗</span></a>
       <a href="#about" class="btn btn-ghost">Meet Eugenia</a>
@@ -338,15 +376,7 @@ footer{background:var(--black);border-top:1px solid rgba(245,238,226,.08);paddin
   <div class="scroll-hint"><div class="mouse"></div>Scroll</div>
 </section>
 
-<!-- marquee -->
-<div class="marquee">
-  <div class="marquee-track">
-    <span>Play</span><span class="dot">✦</span><span>Improvise</span><span class="dot">✦</span><span>Connect</span><span class="dot">✦</span><span>Express</span><span class="dot">✦</span><span>Be present</span><span class="dot">✦</span>
-    <span>Play</span><span class="dot">✦</span><span>Improvise</span><span class="dot">✦</span><span>Connect</span><span class="dot">✦</span><span>Express</span><span class="dot">✦</span><span>Be present</span><span class="dot">✦</span>
-  </div>
-</div>
-
-<!-- about -->
+<!-- about (Education/Studies section typography updated) -->
 <section id="about"><div class="wrap about">
   <div class="about-img reveal">
     <div class="frame" data-zoom="https://raw.githubusercontent.com/agelmet/PANAGIOTIDOU/310434a55e0feb5042b6ef8540541f798ad8070f/Euginia%203.jpg">
@@ -355,10 +385,10 @@ footer{background:var(--black);border-top:1px solid rgba(245,238,226,.08);paddin
     <div class="tag">Eugenia Panagiotides</div>
   </div>
   <div class="about-txt">
-    <div class="sec-eyebrow reveal"><span class="num">01</span> The teacher</div>
-    <p class="lead reveal d1">Trained at the Aristotle University School of Drama and the Stella Adler Studio in New York, Eugenia has spent a decade making rooms feel safe enough to be brave in.</p>
-    <p class="reveal d2">As children, we say yes without hesitation — we imagine, pretend and play without worrying how we look or whether we're good enough. Somewhere along the way, most of us lose that freedom. Eugenia's whole practice is about getting it back.</p>
-    <p class="reveal d3">Through acting and improvisation, she invites beginners and seasoned performers alike to take risks, make mistakes, and grow through doing rather than judging — building skill little by little through play and genuine connection.</p>
+    <div class="sec-eyebrow reveal"><span class="num">01</span> The teacher & Studies</div>
+    <p class="lead reveal d1">Trained at the Aristotle University School of Drama and the prestigious Stella Adler Studio of Acting in New York, Eugenia has spent over a decade cultivating spaces safe enough for deep creative bravery.</p>
+    <p class="reveal d2">Her formal academic studies in classical theater and contemporary dramatic technique laid the rigorous groundwork for her pedagogical philosophy. As children, we say yes without hesitation — we imagine, pretend, and play without worrying how we look or whether we are good enough. Somewhere along the way, most adults lose that vital artistic freedom. Eugenia's practice bridges academic discipline with intuitive play to bring it back.</p>
+    <p class="reveal d3">Through structured acting exercises and dynamic improvisation, she invites beginners and seasoned performers alike to take creative risks, make glorious mistakes, and grow through doing rather than judging — building lasting technique little by little through connection.</p>
     <div class="quote reveal d4">"We are aware of what we are doing, but we are not judging."</div>
   </div>
 </div></section>
@@ -388,7 +418,7 @@ footer{background:var(--black);border-top:1px solid rgba(245,238,226,.08);paddin
   </div>
 </div></section>
 
-<!-- services -->
+<!-- services (Card Layout with perfectly centered arrows at the bottom) -->
 <section id="services"><div class="wrap">
   <div class="sec-head reveal">
     <div class="sec-eyebrow"><span class="num">03</span> What we offer</div>
@@ -399,49 +429,148 @@ footer{background:var(--black);border-top:1px solid rgba(245,238,226,.08);paddin
       <div class="svc-num">01</div>
       <div class="svc-body">
         <h3>Beginner Acting</h3>
-        <p>Step into an acting class for the very first time. Build confidence in front of others, find your creative voice, and discover what it feels like to be fully present — all at your own pace.</p>
+        <p>Step into an acting class for the very first time. Build confidence in front of others, find your authentic creative voice, and discover what it feels like to be fully present in the moment — all at your own comfortable pace.</p>
       </div>
-      <div class="svc-meta">Weekly course<br>All levels</div>
+      <div class="svc-meta">Weekly course · All levels</div>
       <div class="svc-arrow">↗</div>
     </div>
     <div class="svc reveal d2">
       <div class="svc-num">02</div>
       <div class="svc-body">
         <h3>Improvisation</h3>
-        <p>Learn to say "yes, and" — to listen, respond and create in real time. Improv sharpens spontaneity, presence and communication, and it's the most fun you'll have learning anything.</p>
+        <p>Learn the transformative power of "yes, and" — to truly listen, respond instinctively, and create stories in real time. Improv sharpens spontaneity, executive presence, and interpersonal communication in the most joyful way possible.</p>
       </div>
-      <div class="svc-meta">Group classes<br>No experience needed</div>
+      <div class="svc-meta">Group classes · No experience needed</div>
       <div class="svc-arrow">↗</div>
     </div>
     <div class="svc reveal d3">
       <div class="svc-num">03</div>
       <div class="svc-body">
         <h3>Corporate Workshops</h3>
-        <p>Get your team out of the office mindset and back into curiosity. Playful, energetic, purposeful sessions that strengthen how people communicate, listen, trust and collaborate — at your office, a creative space, or outdoors.</p>
+        <p>Get your team out of the rigid office mindset and back into curiosity. Playful, energetic, and purposeful sessions designed to strengthen how professionals communicate, active-listen, trust, and collaborate under pressure.</p>
       </div>
-      <div class="svc-meta">Tailored<br>For teams</div>
+      <div class="svc-meta">Tailored · For teams & organizations</div>
       <div class="svc-arrow">↗</div>
     </div>
   </div>
 </div></section>
 
-<!-- gallery -->
+<!-- NEW: Corporate & Insights Section / CMS Architecture -->
+<section class="corporate" id="corporate"><div class="wrap">
+  <div class="sec-head reveal">
+    <div class="sec-eyebrow"><span class="num">04</span> Corporate & Insights</div>
+    <h2 class="sec-title">Tailored packages & <em>creative leadership.</em></h2>
+  </div>
+
+  <!-- CMS SLOT: Corporate Packages -->
+  <h3 class="cms-section-subtitle reveal">Corporate Training Packages</h3>
+  <div class="cms-feed">
+    
+    <!-- CMS BLOCK 1 - Easily Duplicable -->
+    <article class="cms-card reveal d1">
+      <div class="cms-card-img">
+        <span class="cms-tag">Package 01</span>
+        <img src="https://raw.githubusercontent.com/agelmet/PANAGIOTIDOU/521388b4747cea502cb7c7fcdf6978be37a98643/3a618b0a-4667-4d74-b8a7-fa3f8572fecf.jpeg" alt="Team Dynamic & Trust Building">
+      </div>
+      <div class="cms-card-body">
+        <h3>Team Dynamics & Trust Building</h3>
+        <p>An intensive half-day workshop designed to dismantle corporate silos and foster authentic interpersonal trust. Through ensemble-building theater techniques and physical improvisation, participants learn to rely on their colleagues, navigate vulnerability without hesitation, and build psychological safety within competitive work environments. Perfect for newly formed teams or departments undergoing structural transitions.</p>
+        <div class="cms-footer"><span>Duration: 4 Hours</span><span>In-Person ↗</span></div>
+      </div>
+    </article>
+
+    <!-- CMS BLOCK 2 - Easily Duplicable -->
+    <article class="cms-card reveal d2">
+      <div class="cms-card-img">
+        <span class="cms-tag">Package 02</span>
+        <img src="https://raw.githubusercontent.com/agelmet/PANAGIOTIDOU/521388b4747cea502cb7c7fcdf6978be37a98643/5e714069-c07b-4630-8517-62262255e8a4.jpeg" alt="Spontaneous Leadership & Communication">
+      </div>
+      <div class="cms-card-body">
+        <h3>Spontaneous Leadership & Agility</h3>
+        <p>In fast-paced business landscapes, leaders must pivot with confidence and clarity. This specialized module adapts core "Yes, And" improvisation frameworks for executives and team leads. Participants master the art of active listening under high-stress conditions, constructive ideological alignment, and speaking with authentic presence without relying on scripted presentations.</p>
+        <div class="cms-footer"><span>Duration: 1 or 2 Days</span><span>Tailored ↗</span></div>
+      </div>
+    </article>
+
+    <!-- CMS BLOCK 3 - Easily Duplicable -->
+    <article class="cms-card reveal d3">
+      <div class="cms-card-img">
+        <span class="cms-tag">Package 03</span>
+        <img src="https://raw.githubusercontent.com/agelmet/PANAGIOTIDOU/521388b4747cea502cb7c7fcdf6978be37a98643/IMG_8048.png" alt="Creative Storytelling for Brands">
+      </div>
+      <div class="cms-card-body">
+        <h3>Creative Storytelling & Presentation</h3>
+        <p>Transform standard corporate pitching into compelling narrative experiences. By combining Stella Adler's character motivation methods with vocal production techniques, this workshop empowers client-facing professionals to engage audiences emotionally and persuasively. We focus on body language, breath control, and structuring messages that resonate long after the meeting ends.</p>
+        <div class="cms-footer"><span>Duration: Multi-Week</span><span>On-Site / Off-Site ↗</span></div>
+      </div>
+    </article>
+
+  </div>
+
+  <!-- CMS SLOT: Articles & Thoughts -->
+  <h3 class="cms-section-subtitle reveal" style="margin-top:2rem">Latest Articles & Insights</h3>
+  <div class="cms-feed">
+    
+    <!-- CMS ARTICLE 1 - Easily Duplicable -->
+    <article class="cms-card reveal d1">
+      <div class="cms-card-img">
+        <span class="cms-tag">Article</span>
+        <img src="https://raw.githubusercontent.com/agelmet/PANAGIOTIDOU/521388b4747cea502cb7c7fcdf6978be37a98643/IMG_8049.jpeg" alt="Why Improv is the Secret Weapon for Modern Workplace Collaboration">
+      </div>
+      <div class="cms-card-body">
+        <h3>Why Improv is the Secret Weapon for Collaboration</h3>
+        <p>When most corporate professionals hear the word 'improvisation,' they immediately think of stand-up comedy or theatrical pressure. But at its core, improvisation is the science of radical collaboration. In this deep dive, we explore how removing the fear of judgment allows cross-functional teams to innovate 40% faster and communicate with unprecedented clarity.</p>
+        <div class="cms-footer"><span>Read Article</span><span>5 min read →</span></div>
+      </div>
+    </article>
+
+    <!-- CMS ARTICLE 2 - Easily Duplicable -->
+    <article class="cms-card reveal d2">
+      <div class="cms-card-img">
+        <span class="cms-tag">Article</span>
+        <img src="https://raw.githubusercontent.com/agelmet/PANAGIOTIDOU/521388b4747cea502cb7c7fcdf6978be37a98643/e28aa7ba-087a-4a29-b3e5-f23156d30f2a.jpeg" alt="The Neuroscience of Play in Adult Learning">
+      </div>
+      <div class="cms-card-body">
+        <h3>The Neuroscience of Play in Adult Learning</h3>
+        <p>Why do adults struggle to adopt new skills compared to children? The answer lies in neuroplasticity and self-monitoring. Discover how theatrical play down-regulates the amygdala, reducing performance anxiety and creating the optimal biochemical environment for creative problem solving, memory retention, and empathetic leadership.</p>
+        <div class="cms-footer"><span>Read Article</span><span>7 min read →</span></div>
+      </div>
+    </article>
+
+    <!-- CMS ARTICLE 3 - Easily Duplicable -->
+    <article class="cms-card reveal d3">
+      <div class="cms-card-img">
+        <span class="cms-tag">Case Study</span>
+        <img src="https://raw.githubusercontent.com/agelmet/PANAGIOTIDOU/310434a55e0feb5042b6ef8540541f798ad8070f/IMG_2650.jpeg" alt="From Tech Silos to Ensemble">
+      </div>
+      <div class="cms-card-body">
+        <h3>From Tech Silos to Ensemble: A Amsterdam Case Study</h3>
+        <p>We recently partnered with a fast-growing Amsterdam fintech scale-up experiencing severe communication friction between their engineering and marketing departments. Read how a 4-week tailored Va Va Voom theatrical curriculum broke down departmental walls and established a shared language of creative trust.</p>
+        <div class="cms-footer"><span>Read Case Study</span><span>4 min read →</span></div>
+      </div>
+    </article>
+
+  </div>
+</div></section>
+
+<!-- gallery (Sitting on floor image removed & replaced with new images) -->
 <section id="gallery"><div class="wrap">
   <div class="sec-head reveal">
-    <div class="sec-eyebrow"><span class="num">04</span> On the floor</div>
+    <div class="sec-eyebrow"><span class="num">05</span> On the floor</div>
     <h2 class="sec-title">Where the <em>play</em> happens.</h2>
   </div>
   <div class="gallery">
     <div class="gal-item g1 reveal" data-zoom="https://github.com/agelmet/PANAGIOTIDOU/blob/main/IMG_2650.jpeg?raw=true"><img src="https://github.com/agelmet/PANAGIOTIDOU/blob/main/IMG_2650.jpeg?raw=true" alt="Eugenia improvising during a class"></div>
     <div class="gal-item g2 reveal d1" data-zoom="https://raw.githubusercontent.com/agelmet/PANAGIOTIDOU/310434a55e0feb5042b6ef8540541f798ad8070f/Euginia%201.jpg"><img src="https://raw.githubusercontent.com/agelmet/PANAGIOTIDOU/310434a55e0feb5042b6ef8540541f798ad8070f/Euginia%201.jpg" alt="Portrait of Eugenia"></div>
-    <div class="gal-item g3 reveal d2" data-zoom="https://raw.githubusercontent.com/agelmet/PANAGIOTIDOU/60cdd9792fccebde94bb9d5afb0e9843d36e8a81/herooodsw.jpg"><img src="https://raw.githubusercontent.com/agelmet/PANAGIOTIDOU/60cdd9792fccebde94bb9d5afb0e9843d36e8a81/herooodsw.jpg" alt="Acting class in session"></div>
+    <div class="gal-item g3 reveal d2" data-zoom="https://raw.githubusercontent.com/agelmet/PANAGIOTIDOU/521388b4747cea502cb7c7fcdf6978be37a98643/IMG_8049.jpeg"><img src="https://raw.githubusercontent.com/agelmet/PANAGIOTIDOU/521388b4747cea502cb7c7fcdf6978be37a98643/IMG_8049.jpeg" alt="Acting studio creative session"></div>
+    <div class="gal-item g4 reveal d3" data-zoom="https://raw.githubusercontent.com/agelmet/PANAGIOTIDOU/521388b4747cea502cb7c7fcdf6978be37a98643/e28aa7ba-087a-4a29-b3e5-f23156d30f2a.jpeg"><img src="https://raw.githubusercontent.com/agelmet/PANAGIOTIDOU/521388b4747cea502cb7c7fcdf6978be37a98643/e28aa7ba-087a-4a29-b3e5-f23156d30f2a.jpeg" alt="Dynamic acting workshop"></div>
   </div>
 </div></section>
 
 <!-- reviews -->
 <section class="reviews" id="reviews"><div class="wrap">
   <div class="sec-head reveal">
-    <div class="sec-eyebrow"><span class="num">05</span> Voices from the room</div>
+    <div class="sec-eyebrow"><span class="num">06</span> Voices from the room</div>
     <h2 class="sec-title">What people <em>take home.</em></h2>
   </div>
   <div class="rev-grid">
@@ -496,6 +625,7 @@ footer{background:var(--black);border-top:1px solid rgba(245,238,226,.08);paddin
       <a href="#about">About Eugenia</a>
       <a href="#approach">Our approach</a>
       <a href="#services">Classes & workshops</a>
+      <a href="#corporate">Corporate packages</a>
       <a href="#reviews">Voices</a>
     </div>
     <div class="foot-col">

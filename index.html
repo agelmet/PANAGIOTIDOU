@@ -154,7 +154,7 @@ header.scrolled{background:rgba(12,9,8,.82);backdrop-filter:blur(14px);padding-t
 .btn:hover .arr{transform:translate(4px,-4px)}
 .scroll-hint{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.6rem;font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:var(--ivory-dim);opacity:0;animation:fadeIn 1s forwards 1.6s}
 .scroll-hint .mouse{width:22px;height:36px;border:1px solid var(--ivory-dim);border-radius:14px;position:relative}
-.scroll-hint .mouse::after{content:"";position:absolute;top:7px;left:50%;transform:translateX(-50%);width:3px;height:6px;background:var(--amber);border-radius:2px;animation:scrolldot 1.6s infinite}
+.scroll-hint .mouse::after{content:"absolute;top:7px;left:50%;transform:translateX(-50%);width:3px;height:6px;background:var(--amber);border-radius:2px;animation:scrolldot 1.6s infinite}
 @keyframes scrolldot{0%{opacity:0;top:7px}30%{opacity:1}60%{opacity:1;top:16px}100%{opacity:0;top:18px}}
 
 /* ---------- sections ---------- */
@@ -294,9 +294,12 @@ section{position:relative;z-index:2}
 .gal-item:hover img{transform:scale(1.07);filter:grayscale(0)}
 .gal-item::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(12,9,8,.4),transparent 50%);opacity:0;transition:opacity .5s}
 .gal-item:hover::after{opacity:1}
+/* Symmetrical Grid configuration for 5 items */
 .g1{grid-column:span 7;grid-row:span 2}
 .g2{grid-column:span 5}
 .g3{grid-column:span 5}
+.g4{grid-column:span 5}
+.g5{grid-column:span 7}
 
 /* ---------- reviews ---------- */
 .reviews{border-top:1px solid rgba(245,238,226,.07)}
@@ -349,12 +352,12 @@ footer{background:var(--black);border-top:1px solid rgba(245,238,226,.08);paddin
   .phil-grid{grid-template-columns:1fr}
   .rev-grid{grid-template-columns:1fr}
   .gallery{grid-template-columns:repeat(2,1fr)}
-  .g1,.g2,.g3{grid-column:span 2;grid-row:span 1}
-  .g1 img,.g2 img,.g3 img{aspect-ratio:4/3}
+  .g1,.g2,.g3,.g4,.g5{grid-column:span 2;grid-row:span 1}
+  .g1 img,.g2 img,.g3 img,.g4 img,.g5 img{aspect-ratio:4/3}
 }
 @media(max-width:540px){
   .gallery{grid-template-columns:1fr}
-  .g1,.g2,.g3{grid-column:span 1}
+  .g1,.g2,.g3,.g4,.g5{grid-column:span 1}
   .hero-actions{width:100%}
   .hero-actions .btn{flex:1;justify-content:center}
 }
@@ -541,6 +544,13 @@ footer{background:var(--black);border-top:1px solid rgba(245,238,226,.08);paddin
     </div>
     <div class="gal-item g3 reveal d2" data-zoom="https://raw.githubusercontent.com/agelmet/PANAGIOTIDOU/521388b4747cea502cb7c7fcdf6978be37a98643/e28aa7ba-087a-4a29-b3e5-f23156d30f2a.jpeg">
       <img src="https://raw.githubusercontent.com/agelmet/PANAGIOTIDOU/521388b4747cea502cb7c7fcdf6978be37a98643/e28aa7ba-087a-4a29-b3e5-f23156d30f2a.jpeg" alt="Acting studio floor">
+    </div>
+    <!-- 2 New Symmetrical Gallery Images -->
+    <div class="gal-item g4 reveal d3" data-zoom="https://raw.githubusercontent.com/agelmet/PANAGIOTIDOU/521388b4747cea502cb7c7fcdf6978be37a98643/5e714069-c07b-4630-8517-62262255e8a4.jpeg">
+      <img src="https://raw.githubusercontent.com/agelmet/PANAGIOTIDOU/521388b4747cea502cb7c7fcdf6978be37a98643/5e714069-c07b-4630-8517-62262255e8a4.jpeg" alt="Studio space and tools">
+    </div>
+    <div class="gal-item g5 reveal d4" data-zoom="https://raw.githubusercontent.com/agelmet/PANAGIOTIDOU/310434a55e0feb5042b6ef8540541f798ad8070f/IMG_2650.jpeg">
+      <img src="https://raw.githubusercontent.com/agelmet/PANAGIOTIDOU/310434a55e0feb5042b6ef8540541f798ad8070f/IMG_2650.jpeg" alt="Eugenia instructing a class">
     </div>
   </div>
 </div></section>

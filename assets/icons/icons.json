@@ -1,0 +1,16 @@
+{
+ "source": {
+  "kind": "file",
+  "ref": "assets/img/vavavoom-acting-studio-logo-512.png"
+ },
+ "source_md5": "605b5ca463f9ab9fd38339675335e555",
+ "version": "a9681c65",
+ "tile": null,
+ "crop": null,
+ "header": [
+  "file",
+  "assets/img/vavavoom-acting-studio-logo-160.webp",
+  "171d61009992365282c42edcdec1e263"
+ ],
+ "made": "2026-10-27"
+}

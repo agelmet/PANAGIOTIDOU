@@ -476,6 +476,15 @@ footer{background:var(--black);border-top:1px solid rgba(245,238,226,.08);paddin
 @media (max-width:760px){.rev-card.rev-feature{padding:2.2rem}}
 .adv{font-weight:800;letter-spacing:.01em;color:#47C8F5;background:linear-gradient(100deg,#47C8F5 0%,#47C8F5 32%,#6DD5F8 42%,#8BE0FC 47%,#E3F8FF 50%,#8BE0FC 53%,#6DD5F8 58%,#47C8F5 68%,#47C8F5 100%);background-size:260% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;filter:drop-shadow(0 0 6px rgba(71,200,245,.38));animation:advShine 3.8s ease-in-out infinite}@keyframes advShine{0%{background-position:100% 0}62%,100%{background-position:0 0}}
 @media (prefers-reduced-motion:reduce){.adv{animation:none;background-position:50% 0}.loader-badge{animation:none;opacity:1;transform:none}}
+
+/* logo-only brand (27 Oct 2026, round 2) */
+.brand-badge{width:68px;height:68px}
+header.scrolled .brand-badge{width:56px;height:56px}
+.brand-badge{transition:transform .6s var(--ease),width .4s,height .4s}
+@media (max-width:720px){.brand-badge,header.scrolled .brand-badge{width:54px;height:54px}}
+.loader-badge{width:clamp(170px,22vw,230px);height:auto;aspect-ratio:1;margin-bottom:1.8rem}
+.foot-col a.foot-badge{width:170px}.foot-badge img{width:170px;height:170px}
+@media (max-width:540px){.foot-col a.foot-badge{width:150px}.foot-badge img{width:150px;height:150px}}
 </style>
 </head>
 <body>
@@ -483,14 +492,12 @@ footer{background:var(--black);border-top:1px solid rgba(245,238,226,.08);paddin
 <div id="spotlight"></div>
 
 <div id="loader">
-  <img class="loader-badge" src="assets/img/vavavoom-acting-studio-logo-320.webp" width="140" height="140" alt="">
-  <div class="loader-mark"><span>Va</span><span>Va</span><span>Voom</span></div>
+  <img class="loader-badge" src="assets/img/vavavoom-acting-studio-logo-640.webp" width="220" height="220" alt="Va Va Voom Acting Studio">
   <div class="loader-bar"><i></i></div>
-  <div class="loader-sub">The Acting Studio</div>
 </div>
 
 <header id="header">
-  <a href="#top" class="brand" aria-label="Va Va Voom Acting Studio — back to top"><img class="brand-badge" src="assets/img/vavavoom-acting-studio-logo-160.webp" srcset="assets/img/vavavoom-acting-studio-logo-160.webp 160w, assets/img/vavavoom-acting-studio-logo-320.webp 320w" sizes="44px" width="44" height="44" alt="Va Va Voom Acting Studio logo"><span class="brand-word">Va<b>Va</b>Voom</span></a>
+  <a href="#top" class="brand" aria-label="Va Va Voom Acting Studio — back to top"><img class="brand-badge" src="assets/img/vavavoom-acting-studio-logo-160.webp" srcset="assets/img/vavavoom-acting-studio-logo-160.webp 160w, assets/img/vavavoom-acting-studio-logo-320.webp 320w" sizes="68px" width="68" height="68" alt="Va Va Voom Acting Studio logo"></a>
   <nav class="nav-links">
     <a href="#about">About</a>
     <a href="#approach">Approach</a>
@@ -705,7 +712,7 @@ footer{background:var(--black);border-top:1px solid rgba(245,238,226,.08);paddin
 <footer>
   <div class="foot-top">
     <div class="foot-col">
-      <a href="#top" class="foot-badge" aria-label="Va Va Voom Acting Studio — back to top"><img src="assets/img/vavavoom-acting-studio-logo-320.webp" srcset="assets/img/vavavoom-acting-studio-logo-320.webp 320w, assets/img/vavavoom-acting-studio-logo-640.webp 640w" sizes="132px" width="132" height="132" loading="lazy" alt="Va Va Voom Acting Studio logo"></a>
+      <a href="#top" class="foot-badge" aria-label="Va Va Voom Acting Studio — back to top"><img src="assets/img/vavavoom-acting-studio-logo-320.webp" srcset="assets/img/vavavoom-acting-studio-logo-320.webp 320w, assets/img/vavavoom-acting-studio-logo-640.webp 640w" sizes="170px" width="170" height="170" loading="lazy" alt="Va Va Voom Acting Studio logo"></a>
       <p style="color:var(--ivory-dim);max-width:30ch">The Acting Studio. Acting, improvisation, and the freedom to explore — in Amsterdam.</p>
     </div>
     <div class="foot-col">
